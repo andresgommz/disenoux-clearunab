@@ -183,3 +183,22 @@ renderAtajosEventos();
     });
   }catch(e){}
 })();
+
+/* Mobile nav toggle: encuentra .nav-toggle y maneja clase .nav-open en <html> */
+(function(){
+  function closeNav(){ document.documentElement.classList.remove('nav-open'); }
+  function toggleNav(){ document.documentElement.classList.toggle('nav-open'); }
+
+  document.addEventListener('click', function(e){
+    const t = e.target;
+    // toggle button
+    if(t.closest && t.closest('.nav-toggle')){ toggleNav(); return; }
+    // click on nav link -> close
+    if(t.closest && t.closest('.nav-links')){ if(t.tagName === 'A') closeNav(); return; }
+    // click outside nav -> close
+    if(!t.closest || (!t.closest('.nav-links') && !t.closest('.nav-toggle'))){ closeNav(); }
+  });
+
+  // close on ESC
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeNav(); });
+})();

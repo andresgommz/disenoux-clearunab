@@ -170,3 +170,16 @@ nav.main{display:flex;align-items:center;gap:20px;min-height:64px}
 .comments * , #comments-root * , #comments-list * {
   color: inherit !important;
 }
+
+/* Responsive: mobile hamburger & full-screen nav */
+.nav-toggle{display:none}
+@media (max-width:900px){
+  .nav-toggle{display:inline-flex;align-items:center;justify-content:center;background:transparent;border:0;color:inherit;font-size:20px;padding:8px;cursor:pointer}
+  .nav-links{position:fixed;top:0;left:-100%;width:100%;height:100%;background:var(--nav);flex-direction:column;padding-top:72px;gap:0;z-index:1200;transition:left .28s ease}
+  .nav-links > a, .nav-links .dropdown > a{ width:100%; padding:16px 18px; border-bottom:1px solid rgba(0,0,0,0.04) }
+  .nav-links .menu{ position:static; width:100%; box-shadow:none; border-radius:0; }
+  .nav-right{ align-items:center; gap:8px }
+  .nav-open .nav-links{ left:0; overflow:auto }
+  .nav-open body{ overflow:hidden }
+  .nav-links .menu a{ padding-left:36px; }
+}

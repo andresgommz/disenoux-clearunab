@@ -192,3 +192,34 @@ nav.main{display:flex;align-items:center;gap:20px;min-height:64px}
 .dark-mode .bg-white a {
   color: #0c1b2a !important;
 }
+
+/* Responsive: mobile hamburger & full-screen nav (copiar/pegar en otros CSS también) */
+.nav-toggle{display:none;align-items:center;justify-content:center;background:transparent;border:0;color:inherit;font-size:20px;padding:8px;cursor:pointer}
+
+/* Mobile behavior */
+@media (max-width:900px){
+  .nav-toggle{display:inline-flex}
+  /* Hide original nav links visually, we'll present them as a full-screen panel */
+  .nav-links{
+    position:fixed;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:var(--nav);
+    flex-direction:column;
+    align-items:flex-start;
+    padding-top:72px;
+    gap:0;
+    z-index:1200;
+    transition:left .28s ease;
+  }
+  .nav-links > a, .nav-links .dropdown > a{ width:100%; padding:16px 18px; border-bottom:1px solid rgba(0,0,0,0.04); }
+  .nav-links .menu{ position:static; width:100%; box-shadow:none; border-radius:0; border-left:0; }
+  .nav-right{ align-items:center; gap:8px }
+  /* When open */
+  .nav-open .nav-links{ left:0; overflow:auto }
+  .nav-open body{ overflow:hidden } /* avoid background scroll when menu open */
+  /* ensure dropdown menu items are full width */
+  .nav-links .menu a{ padding-left:36px; }
+}
