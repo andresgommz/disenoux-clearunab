@@ -74,20 +74,76 @@
   </div>
 </section>
 
-<!-- (Opcional) Atajos de eventos -->
-<div id="eventos-atajos"></div>
 
-<!-- añadir footer global (color #008f6d) justo antes de </body> -->
+<!-- Footer existente (avisos/links) -->
 <footer style="background:#008f6d;color:#fff;font-size:13px;padding:10px 0">
   <div class="container" style="max-width:1120px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;text-align:center">
     <div>Universidad Autónoma de Bucaramanga - UNAB | Acreditación Institucional de Alta Calidad</div>
     <div>|</div>
     <div>Avenida 42 No. 48 – 11, Bucaramanga - Colombia | PBX (57) (7) 643 6111</div>
     <div>|</div>
-    <div>Centro de Contacto: 018000127395 | <a href="#" style="color:#fff;text-decoration:underline">Aviso de Privacidad</a> | © Todos los derechos reservados</div>
+    <div>Centro de Contacto: 018000127395 | <a id="footer-privacy" href="https://www.unab.edu.co/aviso-de-privacidad?_gl=1*1n860cp*_gcl_aw*R0NMLjE3NjI2NjEwMzUuQ2p3S0NBaUE4YnZJQmhCSkVpd0F1NWF5ck1BSzdnYktKODRfLVB0cUozLWNVSHh0TEh5UkZFYkx0RlB4VHlPUlBJMUVYVFBkUlljZXJob0NBZlFRQXZEX0J3RQ..*_gcl_au*MjQ5OTAxNjIyLjE3NTY5MTI2Mzg.*_ga*NjU3OTYwMzg1LjE3NTgzMTM5OTI.*_ga_LN0FZCTTER*czE3NjI4MDIxODkkbzE0JGcxJHQxNzYyODAzMjk2JGo1OCRsMCRoMA.." target="_blank" rel="noopener" style="color:#fff;text-decoration:underline">Aviso de Privacidad</a> | © Todos los derechos reservados</div>
   </div>
 </footer>
 
+<!-- Cookie consent (cuadrito flotante) -->
+<div id="cookie-box" aria-live="polite" aria-label="Aviso de cookies" hidden>
+  <div class="cookie-inner">
+    <div class="cookie-text">
+      Usamos cookies para mejorar tu experiencia. Al continuar aceptas nuestra política.
+      <a id="cookie-more" href="https://www.unab.edu.co/aviso-de-privacidad?_gl=1*x1pwy4*_gcl_aw*R0NMLjE3NjI2NjEwMzUuQ2p3S0NBaUE4YnZJQmhCSkVpd0F1NWF5ck1BSzdnYktKODRfLVB0cUozLWNVSHh0TEh5UkZFYkx0RlB4VHlPUlBJMUVYVFBkUlljZXJob0NBZlFRQXZEX0J3RQ..*_gcl_au*MjQ5OTAxNjIyLjE3NTY5MTI2Mzg.*_ga*NjU3OTYwMzg1LjE3NTgzMTM5OTI.*_ga_LN0FZCTTER*czE3NjI4MDIxODkkbzE0JGcxJHQxNzYyODAzNDAwJGozMyRsMCRoMA.." target="_blank" rel="noopener">Más info</a>
+    </div>
+    <div class="cookie-actions">
+      <button id="cookie-accept" class="btn">Aceptar</button>
+    </div>
+  </div>
+</div>
+
 <script src="../static/js/index.js"></script>
+
+<!-- Script: mostrar cuadro de cookies al entrar (solo en index) -->
+<script>
+(function(){
+  try{
+    const KEY = 'cookies.accepted';
+    const box = document.getElementById('cookie-box');
+    const btn = document.getElementById('cookie-accept');
+    const more = document.getElementById('cookie-more');
+    // link ya apunta al aviso; si quieres otro, modifica aquí
+    const INFO_URL = more ? more.href : 'https://www.unab.edu.co/aviso-de-privacidad';
+
+    function show(){
+      if(!box) return;
+      box.removeAttribute('hidden');
+      // small delay to allow CSS transition
+      requestAnimationFrame(()=> box.classList.add('visible'));
+    }
+    function hide(){
+      if(!box) return;
+      box.classList.remove('visible');
+      // esperar transición antes de ocultar completamente
+      setTimeout(()=> box.setAttribute('hidden',''), 300);
+    }
+
+    if(localStorage.getItem(KEY) !== '1'){
+      // mostrar tras un micro-delay para que se note la animación
+      setTimeout(show, 120);
+    }
+
+    if(btn){
+      btn.addEventListener('click', ()=>{
+        try{ localStorage.setItem(KEY,'1'); }catch(e){}
+        hide();
+      });
+    }
+    if(more){
+      more.addEventListener('click', (e)=> {
+        // abrir en nueva pestaña (ya tiene target) — aquí solo asegurar comportamiento
+      });
+    }
+  }catch(e){}
+})();
+</script>
+
 </body>
 </html>

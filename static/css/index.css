@@ -24,7 +24,8 @@ body{
   margin:0;
   font-family:"Open Sans",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
   background:#fff;color:#0c1b2a;
-  overflow-y:hidden;
+  /* Permitimos scroll para poder acceder a cuadros flotantes y al footer */
+  overflow-y:auto;
 }
 a{color:inherit;text-decoration:none}
 
@@ -222,4 +223,51 @@ nav.main{display:flex;align-items:center;gap:20px;min-height:64px}
   .nav-open body{ overflow:hidden } /* avoid background scroll when menu open */
   /* ensure dropdown menu items are full width */
   .nav-links .menu a{ padding-left:36px; }
+}
+
+/* Cookie consent box (cuadrito flotante) */
+#cookie-box{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:12000;
+  max-width:420px;
+  width:calc(100% - 40px);
+  border-radius:12px;
+  box-shadow:0 18px 40px rgba(0,0,0,0.22);
+  background:#ffffff;
+  color:#0c1b2a;
+  transform:translateY(18px) scale(.98);
+  opacity:0;
+  transition: transform .28s cubic-bezier(.2,.9,.3,1), opacity .28s ease;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+/* inner layout */
+#cookie-box .cookie-inner{ display:flex; gap:12px; align-items:center; padding:12px 14px; justify-content:space-between; flex-wrap:wrap; }
+#cookie-box .cookie-text{ font-size:13px; color:#244; line-height:1.3; flex:1; min-width:160px; }
+#cookie-box .cookie-text a{ color:var(--btn-bg); font-weight:700; text-decoration:underline; margin-left:6px; }
+#cookie-box .cookie-actions{ display:flex; gap:8px; align-items:center; }
+
+/* visible state */
+#cookie-box.visible{
+  transform:translateY(0) scale(1);
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* button tweaks */
+#cookie-box .btn{ padding:8px 12px; border-radius:8px; font-weight:700; cursor:pointer; }
+#cookie-box .btn:hover{ transform:translateY(-2px); }
+
+/* dark mode support */
+.dark-mode #cookie-box{ background:#0b0b0c; color:#e6eef1; box-shadow:0 18px 40px rgba(0,0,0,0.6); }
+.dark-mode #cookie-box .cookie-text{ color:#dceee6; }
+.dark-mode #cookie-box .cookie-text a{ color:#7fe0c5; }
+
+/* responsive: full-width on small screens */
+@media (max-width:520px){
+  #cookie-box{ left:10px; right:10px; bottom:12px; width:auto; max-width:none; }
+  #cookie-box .cookie-inner{ flex-direction:column; align-items:flex-start; gap:8px; }
 }

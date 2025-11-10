@@ -5,6 +5,21 @@ const toRegister = document.getElementById('toRegister');
 const toLogin = document.getElementById('toLogin');
 const flash = document.getElementById('flash');
 
+// NEW: force this page to remain in light-mode.
+// 1) remove any existing dark-mode class on load
+// 2) monkey-patch classList.add on documentElement to ignore attempts to add 'dark-mode'
+(function(){
+  try{
+    document.documentElement.classList.remove('dark-mode');
+    const root = document.documentElement;
+    const origAdd = root.classList.add.bind(root);
+    root.classList.add = function(...args){
+      if(args.includes('dark-mode')) return;
+      return origAdd(...args);
+    };
+  }catch(e){}
+})();
+
 window.addEventListener('DOMContentLoaded', ()=> {
   formBox.classList.add('enter');
   setTimeout(()=> formBox.classList.remove('enter'), 900);
@@ -74,9 +89,3 @@ registerForm.addEventListener('submit', e=>{
   showFlash('Registro correcto', 'success');
   setTimeout(()=> switchTo(registerForm, loginForm), 900);
 });
-
-(function(){
-  try{
-    if(localStorage.getItem('site.theme') === 'dark') document.documentElement.classList.add('dark-mode');
-  }catch(e){}
-})();

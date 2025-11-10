@@ -237,15 +237,9 @@
               <div><button class="btn primary">Guardar</button></div>
             </form>
 
-            <!-- Botón y contenedor para mostrar Eventos UNAB (iframe) -->
+            <!-- Botón y contenedor para mostrar Eventos UNAB (antes iframe dinámico) -->
             <div style="margin-top:12px">
-              <button id="toggle-unab" class="btn">Eventos UNAB</button>
-              <div id="unab-wrap" style="margin-top:8px;display:none">
-                <iframe id="unab-iframe" src="https://unab.edu.co/eventos-unab" style="width:100%;height:360px;border:1px solid var(--line);border-radius:8px"></iframe>
-                <div class="muted" style="font-size:12px;margin-top:8px">
-                  Si no se muestra el contenido por restricciones de origen, <a href="https://unab.edu.co/eventos-unab" target="_blank" rel="noopener">ábrelo en una nueva pestaña</a>.
-                </div>
-              </div>
+              <a class="btn" href="https://unab.edu.co/eventos-unab" target="_blank" rel="noopener">Eventos UNAB</a>
             </div>
 
           </div>
@@ -258,16 +252,6 @@
         storage.set('cal.view', view);
         renderMain();
       }));
-
-      // toggle botón Eventos UNAB (mostrar/ocultar)
-      const toggleUnab = $('#toggle-unab', root);
-      if(toggleUnab){
-        toggleUnab.addEventListener('click', ()=>{
-          const w = $('#unab-wrap', root);
-          if(!w) return;
-          w.style.display = w.style.display === 'none' ? 'block' : 'none';
-        });
-      }
 
       const form = $('#form-cal', root);
       form.addEventListener('submit', (e)=>{
@@ -792,6 +776,17 @@
     const back = document.getElementById('back-home');
     if(back){
       back.addEventListener('click', ()=> { location.href = 'index.html'; });
+    }
+
+    // Nuevo: botón Cerrar sesión — eliminar usuario guardado y redirigir a login
+    const logoutBtn = document.getElementById('logout-btn');
+    if(logoutBtn){
+      logoutBtn.addEventListener('click', ()=> {
+        try{ localStorage.removeItem('user.name'); }catch(e){}
+        // opcional: limpiar otras claves relacionadas con sesión si las hubiese
+        // try{ localStorage.removeItem('some.other.key'); }catch(e){}
+        location.href = 'login.html';
+      });
     }
   })();
 
