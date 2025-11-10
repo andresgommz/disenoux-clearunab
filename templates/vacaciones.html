@@ -3,50 +3,30 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vacaciones</title>
+  <title>Actividades Intersemestrales</title>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="../static/img/favicon.png">
   <link href="../static/css/index.css" rel="stylesheet">
-  <!-- Estilos de la sección Vacaciones (soporte modo claro y oscuro) -->
   <style>
-    /* Layout base */
-    .vac-wrap{max-width:1120px;margin:0 auto;display:flex;gap:32px;align-items:center;justify-content:center;padding:8px;}
-    .vac-left{flex:1;display:flex;align-items:center;justify-content:center}
-    .vac-right{flex:1;display:flex;align-items:center}
-    .vac-right p{font-size:18px;margin:0;line-height:1.6;max-width:720px}
-    .vac-left img{width:100%;border-radius:18px;display:block;object-fit:cover;max-height:420px}
-
-    /* Light-mode (por defecto) */
-    :root { --vac-text: #21394d; --vac-link:#007f63; --vac-bg: #ffffff; }
-    .vac-right p { color: var(--vac-text); }
-
-    /* Dark-mode overrides */
-    .dark-mode body { background: #070809 !important; color:#e6eef1 !important; }
-    .dark-mode .topbar{ background:#063825 !important; color:#cfeee0 !important; }
-    .dark-mode header{ background:#0b0c0d !important; border-color:#151617 !important; }
-    .dark-mode .vac-right p { color: #e6eef1 !important; }
-    .dark-mode .vac-left img { filter: brightness(.95) saturate(.95); }
-    .dark-mode .vac-wrap { background: transparent !important; }
-    /* Ensure links readable */
-    .dark-mode a { color: var(--vac-link) !important; }
-
-    /* NAV / DROPDOWN: nav-links blancas y dropdown-toggle oscuro+texto blanco */
-    .dark-mode .nav-links > a,
-    .dark-mode .nav-links .dropdown > a {
-      color: #ffffff !important;
-    }
-    .dark-mode .nav-links > a:hover,
-    .dark-mode .nav-links .dropdown > a:hover {
-      color: #ffffff !important;
-      opacity: 0.95;
-    }
-    .dark-mode .dropdown > a {
-      background: #0b0c0d !important;
-      color: #ffffff !important;
-      padding: 8px 12px !important;
-      border-radius: 8px;
-      display: inline-block;
-    }
+    /* ...estilos compactos para la página (soporte light/dark) */
+    .page{max-width:1120px;margin:18px auto;padding:18px}
+    h1{font-size:28px;margin:6px 0 12px}
+    .section{margin-top:18px;padding:14px;border-radius:12px;background:linear-gradient(180deg, #fff, #fbfdff); border:1px solid #e6edf3}
+    .section h2{margin:0 0 12px}
+    .grid-events{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+    .ev-card{padding:12px;border-radius:10px;background:var(--card-bg, #fff);border:1px solid #dfe9ef;display:flex;flex-direction:column;gap:8px}
+    .ev-meta{font-size:13px;color:#3b5566}
+    .ev-time{font-weight:700;color:#0a6b51}
+    .ev-actions{margin-top:auto;display:flex;justify-content:flex-end}
+    .btn.small{padding:8px 10px;font-size:13px;border-radius:8px}
+    .toast-lite{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0aa37f;color:#fff;padding:10px 14px;border-radius:10px;opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease;z-index:13000}
+    .toast-lite.show{opacity:1;transform:translateX(-50%) translateY(-6px);pointer-events:auto}
+    /* Dark mode tweaks */
+    .dark-mode .section{ background:linear-gradient(180deg,#071012,#07090b); border-color:#141516 }
+    .dark-mode .ev-card{ background:#0b0b0c; border-color:#141516; color:#e6eef1 }
+    .dark-mode .ev-meta{ color:#cfeee0 }
+    .dark-mode .ev-time{ color:#7fe0c5 }
+    .dark-mode .toast-lite{ background:#00b386 }
   </style>
 </head>
 <body>
@@ -70,7 +50,7 @@
     </div>
   </div>
 
-  <!-- ===== NAV con EVENTOS desplegable (igual que resto) ===== -->
+  <!-- ===== NAV con EVENTOS desplegable ===== -->
   <header>
     <div class="container">
       <nav class="main">
@@ -102,60 +82,44 @@
     </div>
   </header>
 
-  <!-- ===== Contenido: imagen a la izquierda, solo texto a la derecha (sin título) ===== -->
-  <main class="page" style="padding:4px 16px">
-    <div class="vac-wrap" aria-label="Contenido vacaciones">
-      <div class="vac-left">
-        <img id="vac-img" src="../static/img/vacaciones.jpeg" alt="Vacaciones UNAB">
+  <!-- ===== Contenido: actividades (nuevo) ===== -->
+  <main class="page" role="main">
+    <h1>Actividades intersemestrales — Agéndate</h1>
+    <p class="muted">Selecciona los cursos de tu interés y pulsa "Agendar" para añadirlos a tu calendario personal.</p>
+
+    <section class="section" aria-labelledby="acad">
+      <h2 id="acad">Académicas — Cursos (Ciencias básicas)</h2>
+      <div class="grid-events" id="acad-list">
+        <!-- tarjetas generadas por JS -->
       </div>
-      <div class="vac-right">
-        <p id="vac-text">
-          Estudiante, disfruta tus vacaciones. ¡Recárgate para volver el próximo semestre lleno de energía para seguir aprendiendo en la UNAB, tu universidad!
-        </p>
+    </section>
+
+    <section class="section" aria-labelledby="prog">
+      <h2 id="prog">Programación</h2>
+      <div class="grid-events" id="prog-list">
+        <!-- tarjetas generadas por JS -->
       </div>
-    </div>
+    </section>
   </main>
 
-  <!-- pequeño script para ajustar altura y evitar scroll en pantallas anchas -->
+  <!-- Toast -->
+  <div id="toast" class="toast-lite" role="status" aria-live="polite">Agendado</div>
+
+  <!-- Footer verde (restaurado) -->
+  <footer style="background:#008f6d;color:#fff;font-size:13px;padding:10px 0;margin-top:18px">
+    <div class="container" style="max-width:1120px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;text-align:center">
+      <div>Universidad Autónoma de Bucaramanga - UNAB | Acreditación Institucional de Alta Calidad</div>
+      <div>|</div>
+      <div>Avenida 42 No. 48 – 11, Bucaramanga - Colombia | PBX (57) (7) 643 6111</div>
+      <div>|</div>
+      <div>Centro de Contacto: 018000127395 | <a href="https://www.unab.edu.co/aviso-de-privacidad?_gl=1*1n860cp*_gcl_aw*R0NMLjE3NjI2NjEwMzUuQ2p3S0NBaUE4YnZJQmhCSkVpd0F1NWF5ck1BSzdnYktKODRfLVB0cUozLWNVSHh0TEh5UkZFYkx0RlB4VHlPUlBJMUVYVFBkUlljZXJob0NBZlFRQXZEX0J3RQ..*_gcl_au*MjQ5OTAxNjIyLjE3NTY5MTI2Mzg.*_ga*NjU3OTYwMzg1LjE3NTgzMTM5OTI.*_ga_LN0FZCTTER*czE3NjI4MDIxODkkbzE0JGcxJHQxNzYyODAzMjk2JGo1OCRsMCRoMA.." target="_blank" rel="noopener" style="color:#fff;text-decoration:underline">Aviso de Privacidad</a> | © Todos los derechos reservados</div>
+    </div>
+  </footer>
+
+  <!-- Scripts: dropdown / cuenta / theme (mismo patrón que otras páginas) -->
   <script>
-    (function(){
-      const wrap = document.querySelector('.vac-wrap');
-      const img = document.getElementById('vac-img');
-
-      function adjust(){
-        const topbar = document.querySelector('.topbar');
-        const header = document.querySelector('header');
-        const footer = document.querySelector('footer');
-        const topH = topbar ? topbar.offsetHeight : 0;
-        const headerH = header ? header.offsetHeight : 0;
-        const footerH = footer ? footer.offsetHeight : 0;
-        const gap = 32; // margen extra
-        const avail = Math.max(200, window.innerHeight - topH - headerH - footerH - gap);
-
-        if(window.innerWidth >= 900){
-          // Forzar que el bloque ocupe la altura disponible y evitar scroll global
-          wrap.style.minHeight = avail + 'px';
-          img.style.maxHeight = (avail - 40) + 'px';
-          document.documentElement.style.overflowY = 'hidden';
-        } else {
-          // En móvil permitir scrolling y apilado natural
-          wrap.style.minHeight = '';
-          img.style.maxHeight = '';
-          document.documentElement.style.overflowY = '';
-        }
-      }
-
-      window.addEventListener('resize', adjust);
-      window.addEventListener('load', adjust);
-      // ajustar también tras imágenes cargadas
-      img.addEventListener('load', adjust);
-    })();
-  </script>
-
-  <!-- Insertar/actualizar script cercano al final (antes del footer) -->
-  <script>
+  // Dropdown eventos: abrir/cerrar, click fuera, ESC (delegado)
   (function(){
-    // Dropdown eventos: abrir/cerrar, click fuera, ESC (delegado)
     const dd = document.querySelector('.dropdown');
     const tg = dd?.querySelector('.dropdown-toggle');
     tg?.addEventListener('click', e => { e.preventDefault(); dd.classList.toggle('open'); });
@@ -172,12 +136,8 @@
         location.href = u ? 'userpage.html' : 'login.html';
       });
     }
-  })();
-  </script>
 
-  <!-- Aplicar tema guardado (dark/light) aunque esta página no tenga toggle -->
-  <script>
-  (function(){
+    // aplicar tema guardado
     try{
       const t = localStorage.getItem('site.theme');
       if(t === 'dark') document.documentElement.classList.add('dark-mode');
@@ -186,15 +146,103 @@
   })();
   </script>
 
-  <!-- Footer verde (igual que en las demás páginas) -->
-  <footer style="background:#008f6d;color:#fff;font-size:13px;padding:10px 0;margin-top:18px">
-    <div class="container" style="max-width:1120px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;text-align:center">
-      <div>Universidad Autónoma de Bucaramanga - UNAB | Acreditación Institucional de Alta Calidad</div>
-      <div>|</div>
-      <div>Avenida 42 No. 48 – 11, Bucaramanga - Colombia | PBX (57) (7) 643 6111</div>
-      <div>|</div>
-      <div>Centro de Contacto: 018000127395 | <a href="https://www.unab.edu.co/aviso-de-privacidad?_gl=1*1n860cp*_gcl_aw*R0NMLjE3NjI2NjEwMzUuQ2p3S0NBaUE4YnZJQmhCSkVpd0F1NWF5ck1BSzdnYktKODRfLVB0cUozLWNVSHh0TEh5UkZFYkx0RlB4VHlPUlBJMUVYVFBkUlljZXJob0NBZlFRQXZEX0J3RQ..*_gcl_au*MjQ5OTAxNjIyLjE3NTY5MTI2Mzg.*_ga*NjU3OTYwMzg1LjE3NTgzMTM5OTI.*_ga_LN0FZCTTER*czE3NjI4MDIxODkkbzE0JGcxJHQxNzYyODAzMjk2JGo1OCRsMCRoMA.." target="_blank" rel="noopener" style="color:#fff;text-decoration:underline">Aviso de Privacidad</a> | © Todos los derechos reservados</div>
-    </div>
-  </footer>
+  <!-- Script: lógica de agendar (mantener la implementación previa) -->
+  <script>
+  (function(){
+    const courses = [
+      { section:'acad', title:'Cálculo diferencial', range:'Junio 23 - Julio 18', time:'07:00', timeLabel:'7:00 a.m. - 12:00 m.' },
+      { section:'acad', title:'Cálculo integral',   range:'Junio 23 - Julio 18', time:'07:00', timeLabel:'7:00 a.m. - 12:00 m.' },
+      { section:'acad', title:'Ecuaciones diferenciales', range:'Junio 23 - Julio 18', time:'07:00', timeLabel:'7:00 a.m. - 12:00 m.' },
+      { section:'prog', title:'Curso de programación web', range:'Junio 2 - Junio 20', time:'14:00', timeLabel:'2:00 p.m. - 6:00 p.m.' },
+      { section:'prog', title:'Curso de Python', range:'Junio 2 - Junio 20', time:'14:00', timeLabel:'2:00 p.m. - 6:00 p.m.' },
+      { section:'prog', title:'Curso de Java', range:'Junio 2 - Junio 20', time:'14:00', timeLabel:'2:00 p.m. - 6:00 p.m.' },
+    ];
+
+    const monthMap = {
+      'enero':1,'febrero':2,'marzo':3,'abril':4,'mayo':5,'junio':6,'julio':7,'agosto':8,'septiembre':9,'octubre':10,'noviembre':11,'diciembre':12,
+      'Enero':1,'Febrero':2,'Marzo':3,'Abril':4,'Mayo':5,'Junio':6,'Julio':7,'Agosto':8,'Septiembre':9,'Octubre':10,'Noviembre':11,'Diciembre':12
+    };
+
+    function parseRangeToDates(rangeStr){
+      const year = (new Date()).getFullYear();
+      const parts = rangeStr.split('-').map(s=>s.trim());
+      if(parts.length !== 2) return [];
+      const p1 = parts[0].split(' ').filter(Boolean);
+      const p2 = parts[1].split(' ').filter(Boolean);
+      let startMonthName = p1[0], startDay = p1[1] || p1[0];
+      let endMonthName, endDay;
+      if(p2.length === 2){ endMonthName = p2[0]; endDay = p2[1]; }
+      else { endMonthName = startMonthName; endDay = p2[0]; }
+      const sm = monthMap[startMonthName] || monthMap[startMonthName.toLowerCase()];
+      const em = monthMap[endMonthName]   || monthMap[endMonthName.toLowerCase()];
+      if(!sm || !em) return [];
+      const sDate = new Date(year, sm-1, Number(startDay));
+      const eDate = new Date(year, em-1, Number(endDay));
+      const dates = [];
+      for(let d = new Date(sDate); d <= eDate; d.setDate(d.getDate()+1)){
+        dates.push(d.toISOString().slice(0,10));
+      }
+      return dates;
+    }
+
+    function loadKey(k){ try{ return JSON.parse(localStorage.getItem(k)) || []; }catch(e){ return []; } }
+    function saveKey(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+
+    function showToast(msg){
+      const t = document.getElementById('toast');
+      if(!t) return;
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(()=> t.classList.remove('show'), 2200);
+    }
+
+    function isLogged(){ try{ const u = JSON.parse(localStorage.getItem('user.name')); return !!u }catch(e){ return false } }
+
+    function escapeHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+    function render(){
+      const acadHost = document.getElementById('acad-list');
+      const progHost = document.getElementById('prog-list');
+      acadHost.innerHTML=''; progHost.innerHTML='';
+      const userEvents = loadKey('user.events');
+
+      courses.forEach(c=>{
+        const host = (c.section==='acad')? acadHost : progHost;
+        const card = document.createElement('div'); card.className='ev-card';
+        card.innerHTML = `<div style="font-weight:700">${escapeHtml(c.title)}</div>
+                          <div class="ev-meta">${escapeHtml(c.range)} · <span class="ev-time">${escapeHtml(c.timeLabel)}</span></div>
+                          <div class="ev-actions"><button class="btn small">Agendar</button></div>`;
+        host.appendChild(card);
+        const btn = card.querySelector('button');
+        const existing = userEvents.some(ev => ev.titulo === c.title);
+        if(existing){ btn.textContent = 'Agendado'; btn.disabled = true; }
+        btn.addEventListener('click', ()=>{
+          if(!isLogged()){ location.href='login.html'; return; }
+          btn.disabled = true; btn.textContent = 'Agendando...';
+          const dates = parseRangeToDates(c.range);
+          if(dates.length===0){ alert('Rango de fechas no válido'); btn.disabled=false; btn.textContent='Agendar'; return; }
+          const ue = loadKey('user.events'); const cal = loadKey('cal.items');
+          const added=[];
+          dates.forEach(d=>{
+            const existsUser = ue.some(x=> x.titulo===c.title && x.fecha===d);
+            if(!existsUser){
+              const id = crypto.randomUUID? crypto.randomUUID() : ('ev_'+Date.now()+'_'+Math.random().toString(36).slice(2,8));
+              const ev = { id, titulo: c.title, fecha: d, hora: c.time, descripcion: c.timeLabel, img:'' };
+              ue.push(ev);
+              const existsCal = cal.some(x=> x.titulo===c.title && x.fecha===d && x.hora===c.time);
+              if(!existsCal) cal.push({ id: ev.id, titulo: ev.titulo, fecha: ev.fecha, hora: ev.hora||'08:00', nota: ev.descripcion||'' });
+              added.push(ev);
+            }
+          });
+          if(added.length>0){ saveKey('user.events', ue); saveKey('cal.items', cal); showToast('Curso agendado. Se añadió al calendario.'); btn.textContent='Agendado'; btn.disabled=true; }
+          else { btn.textContent='Agendado'; btn.disabled=true; showToast('Ya estabas agendado en este curso.'); }
+        });
+      });
+    }
+
+    render();
+  })();
+  </script>
+
 </body>
 </html>
