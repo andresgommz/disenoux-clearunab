@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="../static/css/login.css" />
+<title>UNAB</title>
+</head>
+<body>
+<div class="form-box bg-white" id="formBox" aria-live="polite">
+  <form id="loginForm" class="active" autocomplete="off">
+    <h2 class="form-title">Iniciar sesión</h2>
+    <div class="input-group">
+      <i class="fa-solid fa-user input-icon"></i>
+      <input class="form-input" name="username" type="text" placeholder="Usuario" required />
+    </div>
+    <div class="input-group">
+      <i class="fa-solid fa-lock input-icon"></i>
+      <input class="form-input" name="password" type="password" placeholder="Contraseña" required />
+    </div>
+    <p class="switch-text">¿No tienes un usuario? <a href="#" id="toRegister">Regístrate</a></p>
+    <button class="submit-btn" type="submit">Iniciar sesión</button>
+  </form>
+
+  <form id="registerForm" class="hidden" autocomplete="off">
+    <h2 class="form-title">Crear cuenta</h2>
+    <div class="input-group">
+      <i class="fa-solid fa-user input-icon"></i>
+      <input class="form-input" name="reg_username" type="text" placeholder="Usuario" required />
+    </div>
+    <div class="input-group">
+      <i class="fa-solid fa-lock input-icon"></i>
+      <input id="regPassword" class="form-input" name="reg_password" type="password" placeholder="Contraseña" required />
+    </div>
+    <div class="input-group">
+      <i class="fa-solid fa-lock input-icon"></i>
+      <input id="regConfirm" class="form-input" name="reg_confirm" type="password" placeholder="Confirmar contraseña" required />
+    </div>
+    <p class="switch-text">¿Ya tienes cuenta? <a href="#" id="toLogin">Inicia sesión</a></p>
+    <button class="submit-btn" type="submit">Registrar</button>
+  </form>
+</div>
+
+<div id="flash" class="flash-message" role="status" aria-hidden="true"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+<script src="../static/js/login.js"></script>
+</body>
+</html>

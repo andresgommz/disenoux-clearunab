@@ -1,0 +1,192 @@
+:root{
+  --bg:#0a0a0a; --bg2:#0f0f10; --panel:#111214; --muted:#9ca3af; --text:#e5e7eb; --line:#2a2b2f;
+  --brand:#008F6D; --brand-2:#00A67D; --ok:#10b981; --warn:#f59e0b; --danger:#ef4444;
+  --radius:16px; --radius-sm:12px; --shadow:0 10px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 'Open Sans', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
+a{color:var(--text)}
+.container{max-width:1100px;margin:0 auto;padding:0 16px}
+header{position:sticky;top:0;background:rgba(10,10,10,.75);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line);z-index:5}
+header .brand{display:flex;align-items:center;gap:10px;padding:14px 0}
+.logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--brand-2));}
+main{display:grid;grid-template-columns:260px 1fr;gap:24px;padding:24px 0}
+@media (max-width:900px){main{grid-template-columns:1fr} aside{order:2}}
+aside nav{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--panel)}
+.navbtn{width:100%;text-align:left;background:none;border:0;color:var(--text);padding:12px 14px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;cursor:pointer}
+.navbtn:last-child{border-bottom:0}
+.navbtn:hover{background:#17181b}
+.navbtn.active{background:#1b1c20}
+section.panel{border:1px solid var(--line);border-radius:var(--radius);padding:18px;background:var(--panel);box-shadow:var(--shadow)}
+h2{margin:0 0 6px 0;font-size:20px}
+.muted{color:var(--muted)}
+.grid{display:grid;gap:12px}
+.grid-2{grid-template-columns:1fr 1fr}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:900px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
+.card{border:1px solid var(--line);border-radius:var(--radius);background:var(--bg2);padding:14px}
+input,select,button{font:inherit}
+input,select{width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:#0d0e10;color:var(--text)}
+input[type="number"]{appearance:textfield}
+::-webkit-outer-spin-button, ::-webkit-inner-spin-button{appearance:none;margin:0}
+.btn{border:1px solid var(--line);background:#17181b;color:var(--text);padding:10px 12px;border-radius:12px;cursor:pointer}
+.btn:hover{background:#1e2025}
+.btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));border:0}
+.btn.ghost{background:#0d0e10}
+.row{display:flex;align-items:center;gap:10px}
+.between{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.progress{height:12px;background:#0d0e10;border-radius:999px;overflow:hidden;border:1px solid var(--line)}
+.progress>span{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand-2))}
+.list{list-style:none;margin:0;padding:0}
+.li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px;border:1px solid var(--line);border-radius:12px;background:#0e0f12}
+.k{font-size:12px;color:var(--muted)}
+.pill{padding:2px 8px;border-radius:999px;font-size:12px}
+.pill.ok{background:rgba(16,185,129,.12);color:#34d399}
+.pill.warn{background:rgba(245,158,11,.12);color:#fbbf24}
+.pill.danger{background:rgba(239,68,68,.12);color:#f87171}
+footer{color:var(--muted);padding:24px 0;font-size:12px}
+.hidden{display:none}
+.table{display:grid;grid-template-columns:5fr 2.5fr 2.5fr 40px;gap:8px;align-items:center}
+.th{color:var(--muted);font-size:12px;padding:0 6px}
+.hr{height:1px;background:var(--line);margin:8px 0}
+.ev-img{width:56px;height:56px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:flex;align-items:center;justify-content:center;font-size:22px}
+.ev-row{display:flex;gap:12px;align-items:flex-start}
+.ev-img img{width:56px;height:56px;border-radius:8px;object-fit:cover;display:block}
+.ev-placeholder{width:56px;height:56px;border-radius:8px;border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:11px;text-align:center;padding:4px}
+/* Calendar view styles */
+.cal-wrap{margin-top:12px;display:grid;grid-template-columns:1fr 320px;gap:12px}
+@media (max-width:900px){ .cal-wrap{grid-template-columns:1fr} }
+.cal-panel{border:1px solid var(--line);border-radius:12px;background:var(--bg2);padding:12px}
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cal-weekday{font-size:12px;color:var(--muted);text-align:center}
+.cal-day{min-height:84px;padding:8px;border-radius:8px;background:transparent;border:1px dashed transparent;display:flex;flex-direction:column;gap:6px}
+.cal-day.other-month{opacity:.35}
+.cal-day.today{outline:2px solid rgba(0,166,125,.15);box-shadow:inset 0 -6px 0 rgba(0,166,125,.06)}
+.cal-day .date{font-weight:700}
+.cal-day .ev{font-size:12px;padding:4px 6px;border-radius:8px;background:rgba(0,0,0,.12);margin-top:auto;cursor:pointer}
+.day-events{margin-top:8px}
+.view-toggle{display:flex;gap:8px;margin-bottom:8px}
+/* Dark-mode overrides (aplica en todas las páginas que incluyan este snippet) */
+.dark-mode body{ background:#070809 !important; color:#e6eef1 !important }
+.dark-mode .topbar{ background:#063825 !important; color:#cfeee0 !important }
+.dark-mode header{ background:#0b0c0d !important; border-color:#151617 !important }
+.dark-mode .container, .dark-mode .page{ background:transparent !important }
+.dark-mode .card, .dark-mode .panel, .dark-mode section.panel{ background:#0b0b0c !important; border-color:#141516 !important; color:#e6eef1 }
+.dark-mode .muted{ color:#9fb3ad !important }
+.dark-mode a, .dark-mode .navbtn, .dark-mode .btn{ color:#e7f7f0 !important }
+.dark-mode .btn.primary{ background:linear-gradient(135deg,#007f63,#008f6d) !important }
+/* Forzar color claro en textos oscuros dentro del modo oscuro */
+.dark-mode h1,.dark-mode h2,.dark-mode h3,.dark-mode p,.dark-mode li,
+.dark-mode .k,.dark-mode .meta,.dark-mode .lead,.dark-mode .ev-placeholder,
+.dark-mode .ev-row,.dark-mode .table div,.dark-mode label{
+  color: #ffffff !important;
+}
+/* Light mode variables: aplicadas cuando html tiene la clase .light-mode */
+.light-mode{
+  --bg: #f5f5f5;
+  --bg2: #ffffff;
+  --panel: #ffffff;
+  --muted: #6b7280;
+  --text: #0b1220;
+  --line: #e6e6e6;
+  --shadow: 0 6px 18px rgba(15,15,15,0.06);
+  --brand: #007f63;
+  --brand-2: #00a67d;
+}
+
+/* Small overrides for controls in light mode */
+.light-mode body { background: var(--bg); color: var(--text); }
+.light-mode header { background: rgba(245,245,245,0.95); border-color: var(--line); }
+/* Nav buttons: evitar fondos oscuros al hover/active */
+.light-mode .navbtn:hover{ background: rgba(0,0,0,0.03); color:var(--text) }
+.light-mode .navbtn.active{ background: rgba(0,0,0,0.04); color:var(--text) }
+
+.light-mode .navbtn, .light-mode .navbtn.active { color: var(--text); background: transparent; }
+.light-mode .card, .light-mode .panel, .light-mode section.panel { background: var(--panel); border-color: var(--line); box-shadow: var(--shadow); color: var(--text); }
+
+/* Inputs / selects */
+.light-mode input, .light-mode select { background: #fff; color: var(--text); border-color: var(--line); }
+
+/* Botones */
+.light-mode .btn { background: #ffffff; color: var(--text); border-color: var(--line) }
+.light-mode .btn:hover{ background: #f0f0f0 }
+.light-mode .btn.primary{ background: linear-gradient(135deg,var(--brand),var(--brand-2)); color: #fff }
+.light-mode .btn.ghost { background: transparent; color: var(--text); border-color: var(--line) }
+
+/* List items, tarjetas y placeholders que antes tenían fondo oscuro */
+.light-mode .li { background: var(--panel); border-color: var(--line); color: var(--text) }
+.light-mode .ev-placeholder { border-color: var(--line); color: var(--muted); background: transparent }
+
+/* Progress / chips / calendar events */
+.light-mode .progress { background: #f3f4f6; border-color: var(--line) }
+.light-mode .progress>span{ background: linear-gradient(90deg,var(--brand),var(--brand-2)); }
+.light-mode .cal-day .ev { background: rgba(0,0,0,0.06); color: var(--text) }
+
+/* Ajuste de sombras en logros desbloqueados para modo claro */
+.light-mode .achievements .ach-card.unlocked{
+  box-shadow: 0 6px 18px rgba(11,85,64,0.08);
+}
+
+/* Asegurar contraste en textos forzados */
+.light-mode h1,.light-mode h2,.light-mode h3,.light-mode p,.light-mode li,
+.light-mode .k,.light-mode .meta,.light-mode .lead,.light-mode .ev-placeholder,
+.light-mode .ev-row,.light-mode .table div,.light-mode label{
+  color: var(--text) !important;
+}
+
+/* Achievements: estado locked / unlocked y transición suave */
+.achievements .ach-card{
+  border:1px dashed var(--line);
+  border-radius:10px;
+  padding:10px;
+  text-align:center;
+  background:transparent;
+  color:var(--text);
+  min-height:72px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  transition: transform .28s ease, box-shadow .28s ease, background .28s ease, color .18s ease, border-color .18s ease;
+  will-change: transform, box-shadow;
+}
+.achievements .ach-card .k{ color:var(--muted) }
+
+/* Locked appearance */
+.achievements .ach-card:not(.unlocked){
+  background: transparent;
+  color: var(--text);
+  border-style: dashed;
+  opacity: 0.95;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Unlocked appearance (visible en dark y light) */
+.achievements .ach-card.unlocked{
+  border:0;
+  background: linear-gradient(90deg,var(--brand),var(--brand-2));
+  color: #ffffff;
+  box-shadow: 0 8px 26px rgba(0,0,0,0.18);
+  transform: translateY(-4px);
+}
+
+/* Light-mode tweak: asegurar buen contraste en modo claro para unlocked */
+.light-mode .achievements .ach-card.unlocked{
+  box-shadow: 0 8px 22px rgba(11,85,64,0.08);
+  color: #ffffff;
+}
+
+/* Pequeña interacción hover */
+.achievements .ach-card:hover{ transform: translateY(-6px); }
+
+/* Animación al mostrar sección */
+.panel.fade-in {
+  animation: panelIn .28s ease both;
+}
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

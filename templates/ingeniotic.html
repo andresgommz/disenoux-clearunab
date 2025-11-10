@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IngenioTIC</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="../static/css/ingeniotic.css" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- ===== Topbar redes ===== -->
+<div class="topbar">
+  <div class="container">
+    <div class="social">
+      <a href="https://www.facebook.com/unab.online" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5 3.66 9.14 8.44 9.94v-7.03H8.08v-2.91h2.36V9.41c0-2.33 1.39-3.62 3.52-3.62.72 0 1.84.12 2.33.24v2.56h-1.31c-1.29 0-1.69.8-1.69 1.62v1.95h2.86l-.46 2.91h-2.4V22c4.78-.8 8.44-4.94 8.44-9.94z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/school/universidad-autonoma-de-bucaramanga/posts/?feedView=all" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1.01 1.83-2.07 3.77-2.07 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.03-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/></svg>
+      </a>
+      <a href="https://x.com/unab_online?lang=es" target="_blank" rel="noopener" aria-label="X">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M18.9 2H22l-8.1 9.3L22.7 22h-6.3l-5-6.5L5.4 22H2.3l8.7-9.9L1.9 2h6.5l4.6 6.1L18.9 2zM17.6 20h1.7L8.6 4H6.9l10.7 16z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/unab_online/?hl=es" target="_blank" rel="noopener" aria-label="Instagram">
+        <img src="../static/img/instagram.png" width="18" height="18" alt="Instagram">
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NAV con EVENTOS desplegable ===== -->
+<header>
+  <div class="container">
+    <nav class="main">
+      <div class="nav-links">
+        <a href="index.html">INICIO</a>
+        <a href="egresados.html">EGRESADOS DESTACADOS</a>
+
+        <div class="dropdown">
+          <a class="dropdown-toggle" href="#">EVENTOS ▾</a>
+          <div class="menu">
+            <a href="unabfest.html">UNAB Fest</a>
+            <a href="ulibro.html">Ulibro</a>
+            <a href="semanaingenieria.html">Semana de Ingeniería</a>
+            <a href="ingeniotic.html">Ingeniotic</a>
+          </div>
+        </div>
+
+        <a href="contacto.html">CONTÁCTANOS</a>
+      </div>
+      <div class="nav-right">
+        <a class="account" href="login.html" title="Ingresar a mi cuenta">
+          <svg viewBox="0 0 24 24" fill="#526579"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg>
+          <span>Cuenta</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== Banner ===== -->
+<div class="hero-banner" style="background-image:url(../static/img/ingeniotic.jpeg)"></div>
+
+<!-- ===== Intro + Categorías ===== -->
+<main class="page">
+  <section class="section">
+    <h2 class="section-title">¿Qué es IngenioTIC?</h2>
+    <p class="lead">
+      <b>INGENIOTIC</b> es una oportunidad para que los estudiantes interactúen con evaluadores de la academia
+      y del sector externo, fortaleciendo su trabajo de investigación y abriendo puertas a futuras oportunidades
+      de práctica y empleo.
+    </p>
+
+    <h3 class="section-title" style="margin-top:26px;">Categorías de trabajos</h3>
+
+    <div class="cats">
+      <!-- Proyecto de clase inicial -->
+      <article class="cat-card">
+        <div class="icon-round">
+          <!-- Icono: bombillo (idea inicial) -->
+          <svg viewBox="0 0 24 24"><path d="M9 21h6v-1H9v1Zm3-19a6 6 0 0 0-3.9 10.5c.6.5.9 1.2.9 2V16h6v-1.5c0-.8.3-1.5.9-2A6 6 0 0 0 12 2Z"/></svg>
+        </div>
+        <h3>Proyecto de clase inicial</h3>
+        <p>Propuestas tempranas, ideación y primeros prototipos en entornos de curso.</p>
+      </article>
+
+      <!-- Proyecto de clase avanzado -->
+      <article class="cat-card">
+        <div class="icon-round">
+          <!-- Icono: engranajes (desarrollo) -->
+          <svg viewBox="0 0 24 24"><path d="M10.3 2h3.4l.5 2.2a7 7 0 0 1 1.9.8l2-1.3 2.4 2.4-1.3 2a7 7 0 0 1 .8 1.9L22 13.3v3.4l-2.2.5a7 7 0 0 1-.8 1.9l1.3 2-2.4 2.4-2-1.3a7 7 0 0 1-1.9.8L13.3 22h-3.4l-.5-2.2a7 7 0 0 1-1.9-.8l-2 1.3-2.4-2.4 1.3-2a7 7 0 0 1-.8-1.9L2 13.3V9.9l2.2-.5a7 7 0 0 1 .8-1.9l-1.3-2L6.1 3.1l2 1.3a7 7 0 0 1 1.9-.8L10.3 2Zm1.7 7a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"/></svg>
+        </div>
+        <h3>Proyecto de clase avanzado</h3>
+        <p>Proyectos con validaciones, mejoras iterativas y resultados parciales.</p>
+      </article>
+
+      <!-- Trabajos de grado nivel inicial -->
+      <article class="cat-card">
+        <div class="icon-round">
+          <!-- Icono: birrete -->
+          <svg viewBox="0 0 24 24"><path d="M12 3 2 8l10 5 8-4v6h2V8L12 3Zm-4 9v3c0 1.66 2.69 3 6 3s6-1.34 6-3v-3l-6 3-6-3Z"/></svg>
+        </div>
+        <h3>Trabajos de grado nivel inicial</h3>
+        <p>Anteproyectos en fase de marco teórico, metodología y primeros avances.</p>
+      </article>
+
+      <!-- Trabajos de grado nivel avanzado -->
+      <article class="cat-card">
+        <div class="icon-round">
+          <!-- Icono: trofeo/estrella (alto nivel) -->
+          <svg viewBox="0 0 24 24"><path d="M12 2l2 4 4 .6-3 3 .7 4L12 12l-3.7 1.6.7-4-3-3 4-.6 2-4Zm-6 18h12v2H6v-2Z"/></svg>
+        </div>
+        <h3>Trabajos de grado nivel avanzado</h3>
+        <p>Resultados consolidados, prototipos funcionales, pruebas y discusión final.</p>
+      </article>
+    </div>
+  </section>
+</main>
+
+<script>
+/* Dropdown EVENTOS: abre/cierra y se cierra al hacer click fuera o con ESC */
+const dd = document.querySelector('.dropdown');
+const tg = dd?.querySelector('.dropdown-toggle');
+tg?.addEventListener('click', e => { e.preventDefault(); dd.classList.toggle('open'); });
+document.addEventListener('click', e => { if(dd && !dd.contains(e.target)) dd.classList.remove('open'); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') dd.classList.remove('open'); });
+</script>
+
+<!-- Script: comportamiento "Cuenta" y registro en user.events -->
+<script>
+(function(){
+  const account = document.querySelector('.account');
+  if(account){ account.addEventListener('click', e=>{ e.preventDefault(); let u=null; try{u=JSON.parse(localStorage.getItem('user.name'))}catch{}; location.href = u? 'userpage.html' : 'login.html'; }); }
+
+  function storageGet(k){ try{ return JSON.parse(localStorage.getItem(k)) || []; }catch(e){ return [] } }
+  function storageSet(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+
+  const userEvKey='user.events', calKey='cal.items';
+  document.querySelectorAll('.cat-card').forEach(card=>{
+    const btn = card.querySelector('a') || card.querySelector('button');
+    if(!btn) return;
+    function readEvent(){
+      const t = (card.querySelector('h3')?.textContent||'Evento').trim();
+      const meta = (card.querySelector('p')?.textContent||'').trim();
+      return { titulo:t, fecha: new Date().toISOString().slice(0,10), hora:'08:00', descripcion:meta, img:'' };
+    }
+    const ev = readEvent();
+    // marquemos si hay registro (solo si el botón tiene texto registrarse)
+    if(storageGet(userEvKey).some(x=>x.titulo===ev.titulo && x.fecha===ev.fecha)){ btn.textContent='Registrado'; btn.disabled=true; }
+    btn.addEventListener('click', e=>{
+      e.preventDefault();
+      const user = (()=>{ try{return JSON.parse(localStorage.getItem('user.name')) }catch{return null} })();
+      if(!user){ location.href='login.html'; return; }
+      const ev2 = readEvent(); ev2.id = crypto.randomUUID?crypto.randomUUID():('ev_'+Date.now());
+      const arr = storageGet(userEvKey);
+      if(!arr.some(x=>x.titulo===ev2.titulo && x.fecha===ev2.fecha)){ arr.push(ev2); storageSet(userEvKey, arr); }
+      const cal = storageGet(calKey);
+      if(!cal.some(c=>c.titulo===ev2.titulo && c.fecha===ev2.fecha && c.hora===ev2.hora)){ cal.push({ id:ev2.id, titulo:ev2.titulo, fecha:ev2.fecha, hora:ev2.hora||'08:00', nota:ev2.descripcion||''}); storageSet(calKey, cal); }
+      if(btn.tagName.toLowerCase()==='a') btn.textContent='Registrado';
+      btn.disabled=true;
+      alert('Registrado en tu panel');
+    });
+  });
+})();
+</script>
+
+<!-- Comentarios: sección añadida -->
+<section class="section">
+  <div class="page">
+    <div class="card" id="comments-root">
+      <h3>Comentarios</h3>
+      <div id="comments-list" style="margin-top:12px; max-height:260px; overflow:auto; border-top:1px solid #e6edf3; padding-top:8px"></div>
+      <form id="comment-form" style="margin-top:12px">
+        <input name="name" placeholder="Tu nombre" style="width:100%;padding:8px;border-radius:8px;border:1px solid #d9dadc;margin-bottom:8px" />
+        <textarea name="text" rows="3" placeholder="Escribe un comentario" style="width:100%;padding:8px;border-radius:8px;border:1px solid #d9dadc"></textarea>
+        <div style="margin-top:8px;text-align:right"><button type="submit" class="btn-outline">Publicar</button></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script src="../static/js/ingeniotic.js"></script>
+</body>
+</html>

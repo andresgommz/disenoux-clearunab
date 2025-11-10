@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clear UNAB — Contacto / PQRS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml"
+      href='data:image/svg+xml;utf8,
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="%238b5cf6"/><stop offset="1" stop-color="%237c3aed"/>
+        </linearGradient></defs>
+        <rect width="64" height="64" rx="14" fill="url(%23g)"/>
+      </svg>'>
+
+<style>
+:root{
+  --green-600:#0aa37f; --green-700:#009a78;
+  --nav:#f7f9fb; --nav-line:#e2e8ee;
+  --link:#22313f; --link-active:#009a78;
+
+  --page-max:1120px;
+  --shadow:0 10px 26px rgba(0,0,0,.08);
+  --radius-lg:22px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:"Open Sans",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#fff;color:#0c1b2a}
+a{color:inherit;text-decoration:none}
+
+/* ===== Topbar redes ===== */
+.topbar{background:var(--green-600);color:#fff;font-size:12px;padding:6px 0}
+.container{max-width:var(--page-max);margin:0 auto;padding:0 16px}
+.topbar .social{display:flex;gap:16px;align-items:center;justify-content:flex-end}
+.topbar .social a{display:inline-grid;place-items:center;width:18px;height:18px;opacity:.95}
+.topbar .social a:hover{opacity:1;transform:translateY(-1px)}
+
+/* ===== Header / Nav ===== */
+header{background:var(--nav);border-bottom:1px solid var(--nav-line);position:sticky;top:0;z-index:20}
+nav.main{display:flex;align-items:center;gap:20px;min-height:64px}
+.nav-links{display:flex;align-items:center;gap:0;position:relative}
+
+/* enlaces y toggle con subrayado animado + línea divisoria */
+.nav-links > a,
+.nav-links .dropdown > a{
+  color:var(--link);
+  font-weight:800;
+  padding:12px 14px;
+  position:relative;
+  display:inline-block;
+}
+.nav-links a + a, .nav-links .dropdown + a{margin-left:6px}
+.nav-links a + a::before, .nav-links .dropdown + a::before{
+  content:"";position:absolute;left:-3px;top:32%;height:36%;width:1px;background:#e2e8ee;
+}
+.nav-links > a::after,
+.nav-links .dropdown > a::after{
+  content:"";position:absolute;left:10px;right:10px;bottom:6px;height:3px;border-radius:3px;
+  background:var(--link-active);transform:scaleX(0);transform-origin:left;transition:transform .25s ease;
+}
+.nav-links > a:hover::after,
+.nav-links > a:focus-visible::after,
+.nav-links .dropdown:hover > a::after,
+.nav-links .dropdown.open > a::after{transform:scaleX(1)}
+.nav-links > a.active{color:var(--link-active)}
+.nav-links > a.active::after{transform:scaleX(1)}
+
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:16px}
+.account{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:#526579;padding:8px 10px;border-radius:12px}
+.account:hover{background:#eef3f7}
+.account svg{width:18px;height:18px}
+
+/* ===== Dropdown EVENTOS ===== */
+.dropdown{position:relative}
+.dropdown > a{cursor:pointer;position:relative;z-index:2}
+.menu{
+  position:absolute;top:100%;left:0;min-width:260px;background:#fff;border:1px solid #e6edf3;border-radius:12px;
+  box-shadow:0 12px 26px rgba(0,0,0,.12);padding:8px;display:none;z-index:30;margin-top:8px;
+}
+.dropdown.open .menu{display:block}
+.menu a{
+  display:flex;align-items:center;gap:8px;
+  padding:12px 16px 12px 24px; /* espacio para barrita */
+  border-radius:12px;font-weight:700;color:#0c1b2a;position:relative;
+}
+.menu a:hover{background:#f4f7fb;color:#0aa37f}
+.menu a:focus-visible{outline:none;background:#f4f7fb;color:#0aa37f}
+.menu a::before{
+  content:"";position:absolute;left:10px;top:10px;bottom:10px;width:3px;border-radius:3px;background:transparent;transition:background .18s ease;
+}
+.menu a:hover::before,
+.menu a:focus-visible::before{background:var(--link-active)}
+
+/* ===== Página Contacto ===== */
+.page{max-width:var(--page-max);margin:0 auto;padding:24px 16px 48px}
+.h1{font-size:32px;margin:10px 0 22px;color:#0f2a43;letter-spacing:.2px}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+}
+@media (max-width:980px){ .grid{grid-template-columns:1fr} }
+
+/* Formulario */
+.form-card{
+  border:1px solid #eae8ef;border-radius:var(--radius-lg);
+  padding:22px;background:#fff;box-shadow:var(--shadow);
+}
+.form-card label{display:block;font-weight:800;margin:12px 6px 8px}
+.input, .textarea{
+  width:100%;border:2px solid #e5e8ee;background:#fff;color:#0c1b2a;
+  padding:14px 16px;font-size:16px;outline:none;transition:border-color .2s ease, box-shadow .2s ease
+}
+.input{border-radius:999px}              /* pill redondeado para "Nombre" */
+.textarea{min-height:220px;border-radius:18px;resize:vertical}
+.input:focus, .textarea:focus{border-color:#b9d6ff;box-shadow:0 0 0 4px rgba(0,144,120,.12)}
+.actions{display:flex;gap:12px;margin-top:14px}
+.btn{
+  background:#0aa37f;color:#fff;border:none;font-weight:800;cursor:pointer;
+  padding:12px 18px;border-radius:14px;box-shadow:0 10px 20px rgba(0,0,0,.12);transition:transform .05s ease,background .18s ease
+}
+.btn:hover{background:#078a69}
+.btn:active{transform:translateY(1px)}
+.btn.secondary{background:#eef3f7;color:#0c1b2a}
+.btn.secondary:hover{background:#e7edf3}
+
+/* Mapa + contacto */
+.map-card{
+  border:1px solid #eae8ef;border-radius:var(--radius-lg);
+  background:#fff;box-shadow:var(--shadow);overflow:hidden;
+}
+.map-box{position:relative;aspect-ratio:16/9;background:#fafafa}
+.map-box iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.map-fallback{position:absolute;inset:0;display:grid;place-items:center;color:#2b3b4b;font-weight:800;letter-spacing:.4px}
+
+.contact-list{padding:16px 18px 20px;display:grid;gap:12px}
+.item{display:flex;align-items:flex-start;gap:12px;color:#1b2e3f}
+.item b{display:block;font-weight:800;margin-bottom:2px}
+.icon{width:22px;height:22px;flex:0 0 22px;color:#0aa37f}
+
+/* Toast sencillo */
+.toast{
+  position:fixed;left:50%;bottom:22px;transform:translateX(-50%);
+  background:#0aa37f;color:#fff;padding:12px 16px;border-radius:12px;font-weight:700;
+  box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease
+}
+.toast.show{opacity:1;transform:translate(-50%,-6px)}
+</style>
+</head>
+<body>
+
+<!-- ===== Topbar redes ===== -->
+<div class="topbar" id="topbar">
+  <div class="container">
+    <div class="social">
+      <a href="https://www.facebook.com/unab.online" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5 3.66 9.14 8.44 9.94v-7.03H8.08v-2.91h2.36V9.41c0-2.33 1.39-3.62 3.52-3.62.72 0 1.84.12 2.33.24v2.56h-1.31c-1.29 0-1.69.8-1.69 1.62v1.95h2.86l-.46 2.91h-2.4V22c4.78-.8 8.44-4.94 8.44-9.94z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/school/universidad-autonoma-de-bucaramanga/posts/?feedView=all" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1.01 1.83-2.07 3.77-2.07 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.03-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/></svg>
+      </a>
+      <a href="https://x.com/unab_online?lang=es" target="_blank" rel="noopener" aria-label="X">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M18.9 2H22l-8.1 9.3L22.7 22h-6.3l-5-6.5L5.4 22H2.3l8.7-9.9L1.9 2h6.5l4.6 6.1L18.9 2zM17.6 20h1.7L8.6 4H6.9l10.7 16z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/unab_online/?hl=es" target="_blank" rel="noopener" aria-label="Instagram">
+        <img src="../static/img/instagram.png" width="18" height="18" alt="Instagram">
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NAV con EVENTOS desplegable ===== -->
+<header>
+  <div class="container">
+    <nav class="main">
+      <div class="nav-links">
+        <a href="index.html">INICIO</a>
+        <a href="egresados.html">EGRESADOS DESTACADOS</a>
+
+        <div class="dropdown">
+          <a class="dropdown-toggle" href="#">EVENTOS ▾</a>
+          <div class="menu">
+            <a href="unabfest.html">UNAB Fest</a>
+            <a href="ulibro.html">Ulibro</a>
+            <a href="semanaingenieria.html">Semana de Ingeniería</a>
+            <a href="ingeniotic.html">Ingeniotic</a>
+          </div>
+        </div>
+
+        <a class="active" href="contacto.html">CONTÁCTANOS</a>
+      </div>
+      <div class="nav-right">
+        <a class="account" href="login.html" title="Ingresar a mi cuenta">
+          <svg viewBox="0 0 24 24" fill="#526579" aria-hidden="true"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg>
+          <span>Cuenta</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+  <h1 class="h1">PQRS</h1>
+
+  <section class="grid">
+    <!-- Columna izquierda: Form -->
+    <article class="form-card">
+      <form id="pqrsForm" novalidate>
+        <label for="name">Nombre</label>
+        <input id="name" name="name" class="input" type="text" placeholder="Escribe tu nombre" required>
+
+        <label for="msg">Mensaje</label>
+        <textarea id="msg" name="msg" class="textarea" placeholder="Cuéntanos tu solicitud, pregunta o sugerencia" required></textarea>
+
+        <div class="actions">
+          <button type="submit" class="btn">Enviar</button>
+          <button type="reset" class="btn secondary">Limpiar</button>
+        </div>
+      </form>
+    </article>
+
+    <!-- Columna derecha: Mapa + datos -->
+    <article class="map-card">
+      <div class="map-box">
+        <!-- Mapa UNAB (embed). Si no carga, queda el fallback con el texto -->
+        <iframe
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Universidad%20Aut%C3%B3noma%20de%20Bucaramanga&output=embed">
+        </iframe>
+        <div class="map-fallback"></div>
+      </div>
+
+      <div class="contact-list">
+        <div class="item">
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 22s7-5.14 7-11a7 7 0 1 0-14 0c0 5.86 7 11 7 11Z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.5" fill="currentColor"/></svg>
+          <div><b>Dirección</b>Av. 42 #48-11, Bucaramanga</div>
+        </div>
+        <div class="item">
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v2a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h2a2 2 0 0 1 2 1.72c.12.88.32 1.74.6 2.56a2 2 0 0 1-.45 2.11l-1 1a16 16 0 0 0 6 6l1-1a2 2 0 0 1 2.11-.45c.82.28 1.68.48 2.56.6A2 2 0 0 1 22 16.92Z" stroke="currentColor" stroke-width="2"/></svg>
+          <div><b>Teléfono</b>(+57) 607 643 6111</div>
+        </div>
+        <div class="item">
+          <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/><path d="m22 6-10 7L2 6" stroke="currentColor" stroke-width="2"/></svg>
+          <div><b>Email</b>contactenos@unab.edu.co</div>
+        </div>
+      </div>
+    </article>
+  </section>
+</main>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite">¡Mensaje enviado!</div>
+
+<script>
+/* Dropdown EVENTOS: abre/cierra y se cierra al hacer click fuera o con ESC */
+const dd = document.querySelector('.dropdown');
+const tg = dd?.querySelector('.dropdown-toggle');
+tg?.addEventListener('click', e => { e.preventDefault(); dd.classList.toggle('open'); });
+document.addEventListener('click', e => { if(dd && !dd.contains(e.target)) dd.classList.remove('open'); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') dd.classList.remove('open'); });
+
+/* PQRS: demo submit (sin backend) */
+const form = document.getElementById('pqrsForm');
+const toast = document.getElementById('toast');
+form?.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const name = (document.getElementById('name').value || '').trim();
+  const msg  = (document.getElementById('msg').value  || '').trim();
+  if(!name || !msg){
+    toast.textContent = 'Completa nombre y mensaje.'; showToast();
+    return;
+  }
+  // Aquí podrías hacer fetch() a tu endpoint
+  form.reset();
+  toast.textContent = '¡Mensaje enviado!'; showToast();
+});
+function showToast(){
+  toast.classList.add('show');
+  setTimeout(()=> toast.classList.remove('show'), 2200);
+}
+</script>
+</body>
+</html>
