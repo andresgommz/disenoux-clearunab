@@ -112,6 +112,14 @@ nav.main{display:flex;align-items:center;gap:20px;min-height:64px}
 .page{max-width:1120px;margin:0 auto;padding:0 16px}
 .spacer{height:12px}
 
+/* Comentarios: color por defecto (modo claro) y herencia interna */
+.comments, #comments-root, #comments-list {
+  color: #0c1b2a !important;
+}
+.comments * , #comments-root * , #comments-list * {
+  color: inherit !important;
+}
+
 /* Dark-mode small overrides */
 .dark-mode body{ background:#070809 !important; color:#e6eef1 !important }
 .dark-mode .topbar{ background:#063825 !important; color:#cfeee0 !important }
@@ -119,12 +127,30 @@ nav.main{display:flex;align-items:center;gap:20px;min-height:64px}
 /* Unified dark navbar adjustments */
 .dark-mode header { background: #0b0c0d !important; border-color: #151617 !important; }
 .dark-mode .nav-links a, .dark-mode .nav-links .dropdown > a { color: #e6eef1 !important; }
-.dark-mode .nav-links a.active, .dark-mode .nav-links a:hover { color: var(--link-active) !important; }
-.dark-mode .nav-right .account, .dark-mode .nav-right .account span { color: #e6eef1 !important; }
-.dark-mode .account { background: rgba(255,255,255,0.02) !important; border:1px solid rgba(255,255,255,0.04) !important; }
-.dark-mode .menu{ background:#0b0c0d !important; border-color:#151617 !important; color:#e6eef1 !important; }
-.dark-mode .menu a{ color:#e6eef1 !important; }
-.dark-mode .menu a:hover{ background: rgba(0,166,125,0.08) !important; color: var(--link-active) !important; }
+
+/* NAV / DROPDOWN: hacer nav-links blancos y dropdown-toggle oscuro+texto blanco */
+.dark-mode .nav-links > a,
+.dark-mode .nav-links .dropdown > a {
+  color: #ffffff !important;
+}
+.dark-mode .nav-links > a:hover,
+.dark-mode .nav-links .dropdown > a:hover {
+  color: #ffffff !important;
+  opacity: 0.95;
+}
+.dark-mode .dropdown > a {
+  background: #0b0c0d !important;
+  color: #ffffff !important;
+  padding: 8px 12px !important;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.dark-mode .menu {
+    background: #0b0c0d !important;
+    border-color: #151617 !important;
+    color: #e6eef1 !important;
+}
 
 /* READABILITY: make cards/panels and comments dark with light text (do NOT force white backgrounds) */
 .dark-mode .card,

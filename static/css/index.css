@@ -133,6 +133,14 @@ nav.main{display:flex;align-items:center;gap:20px;min-height:64px}
 .atajos .grupo.open .drop{display:block}
 .atajos .search{margin-left:auto}
 
+/* Comentarios: color por defecto (modo claro) y herencia interna */
+.comments, #comments-root, #comments-list {
+  color: #0c1b2a !important;
+}
+.comments * , #comments-root * , #comments-list * {
+  color: inherit !important;
+}
+
 /* Dark-mode overrides (minimal, loaded on this page) */
 .dark-mode body{ background:#070809 !important; color:#e6eef1 !important }
 .dark-mode .topbar{ background:#063825 !important; color:#cfeee0 !important }

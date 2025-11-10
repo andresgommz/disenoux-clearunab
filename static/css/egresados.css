@@ -111,6 +111,14 @@ nav.main{display:flex;align-items:center;gap:20px;min-height:64px}
 .dot:hover{transform:translateY(-1px)}
 .dot.active{background:#00ECB5}  /* activo */
 
+/* Comentarios: color por defecto (modo claro) y herencia interna */
+.comments, #comments-root, #comments-list {
+  color: #0c1b2a !important;
+}
+.comments * , #comments-root * , #comments-list * {
+  color: inherit !important;
+}
+
 /* Dark-mode small overrides */
 .dark-mode body{ background:#070809 !important; color:#e6eef1 !important }
 .dark-mode .topbar{ background:#063825 !important; color:#cfeee0 !important }

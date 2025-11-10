@@ -163,3 +163,10 @@ nav.main{display:flex;align-items:center;gap:20px;min-height:64px}
 
 /* Comments */
 .dark-mode .comments, .dark-mode #comments-root, .dark-mode #comments-list { background:#0b0b0c !important; color:#e6eef1 !important; border-color:#141516 !important; }
+/* Comentarios: color por defecto (modo claro) y herencia interna */
+.comments, #comments-root, #comments-list {
+  color: #0c1b2a !important;
+}
+.comments * , #comments-root * , #comments-list * {
+  color: inherit !important;
+}

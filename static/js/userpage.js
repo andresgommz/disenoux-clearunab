@@ -218,8 +218,8 @@
         <h2>Calendario</h2>
         <div class="muted">Eventos guardados localmente</div>
         <div class="view-toggle">
-          <button class="btn" data-view="calendar"${view==='calendar'?' ':''}>Vista calendario</button>
-          <button class="btn" data-view="list"${view==='list'?' ':''}>Vista lista</button>
+          <button class="btn" data-view="calendar"${view==='calendar'?' disabled':''}>Vista calendario</button>
+          <button class="btn" data-view="list"${view==='list'?' disabled':''}>Vista lista</button>
         </div>
         <div class="cal-wrap">
           <div class="cal-panel" id="cal-panel"></div>
@@ -227,6 +227,7 @@
             <div style="font-weight:600;margin-bottom:8px">Eventos del día</div>
             <div id="day-events" class="day-events muted">Selecciona un día</div>
             <div style="height:12px"></div>
+
             <div style="font-weight:600;margin-bottom:8px">Agregar evento</div>
             <form id="form-cal" class="grid" style="gap:6px">
               <input name="titulo" placeholder="Título" />
@@ -235,6 +236,18 @@
               <input name="nota" placeholder="Nota (opcional)" />
               <div><button class="btn primary">Guardar</button></div>
             </form>
+
+            <!-- Botón y contenedor para mostrar Eventos UNAB (iframe) -->
+            <div style="margin-top:12px">
+              <button id="toggle-unab" class="btn">Eventos UNAB</button>
+              <div id="unab-wrap" style="margin-top:8px;display:none">
+                <iframe id="unab-iframe" src="https://unab.edu.co/eventos-unab" style="width:100%;height:360px;border:1px solid var(--line);border-radius:8px"></iframe>
+                <div class="muted" style="font-size:12px;margin-top:8px">
+                  Si no se muestra el contenido por restricciones de origen, <a href="https://unab.edu.co/eventos-unab" target="_blank" rel="noopener">ábrelo en una nueva pestaña</a>.
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       `;
@@ -245,6 +258,16 @@
         storage.set('cal.view', view);
         renderMain();
       }));
+
+      // toggle botón Eventos UNAB (mostrar/ocultar)
+      const toggleUnab = $('#toggle-unab', root);
+      if(toggleUnab){
+        toggleUnab.addEventListener('click', ()=>{
+          const w = $('#unab-wrap', root);
+          if(!w) return;
+          w.style.display = w.style.display === 'none' ? 'block' : 'none';
+        });
+      }
 
       const form = $('#form-cal', root);
       form.addEventListener('submit', (e)=>{
@@ -770,4 +793,18 @@
     if(back){
       back.addEventListener('click', ()=> { location.href = 'index.html'; });
     }
+  })();
+
+  // Asegurar favicon dinámico para páginas que carguen este script
+  (function(){
+    try{
+      const href = '../static/img/favicon.png';
+      let link = document.querySelector('link[rel~="icon"]');
+      if(!link){
+        link = document.createElement('link');
+        link.rel = 'icon';
+        document.head.appendChild(link);
+      }
+      link.href = href;
+    }catch(e){}
   })();

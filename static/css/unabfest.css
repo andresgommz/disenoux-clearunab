@@ -149,8 +149,14 @@ nav.main{display:flex;align-items:center;gap:20px;min-height:64px}
 
 /* NEW: cajas que deben permanecer claras en dark-mode */
 .dark-mode .bg-white {
-  background: #ffffff !important;
   color: #0c1b2a !important;
 }
-.dark-mode .bg-white * { color: #0c1b2a !important; }
 .dark-mode .bg-white a { color: #0c1b2a !important; }
+
+/* Comentarios: color por defecto (modo claro) y herencia interna */
+.comments, #comments-root, #comments-list {
+  color: #0c1b2a !important;
+}
+.comments * , #comments-root * , #comments-list * {
+  color: inherit !important;
+}

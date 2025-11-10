@@ -14,6 +14,7 @@
         </linearGradient></defs>
         <rect width="64" height="64" rx="14" fill="url(%23g)"/>
       </svg>'>
+  <link rel="icon" href="../static/img/favicon.png">
 
 <style>
 :root{
@@ -148,12 +149,81 @@ nav.main{display:flex;align-items:center;gap:20px;min-height:64px}
   box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease
 }
 .toast.show{opacity:1;transform:translate(-50%,-6px)}
+
+/* Footer */
+footer{background:#008f6d;color:#fff;font-size:13px;padding:10px 0}
+footer .container{
+  max-width:1120px;margin:0 auto;padding:0 16px;
+  display:flex;align-items:center;justify-content:center;
+  gap:12px;flex-wrap:wrap;text-align:center
+}
+footer a{color:#fff;text-decoration:underline}
+
+/* Dark mode additions */
+.dark-mode body { background:#070809 !important; color:#e6eef1 !important; }
+.dark-mode .topbar { background:#063825 !important; color:#cfeee0 !important; }
+.dark-mode header { background:#0b0c0d !important; border-color:#151617 !important; }
+.dark-mode .container, .dark-mode .page { background:transparent !important; color:#e6eef1 !important; }
+.dark-mode .form-card, .dark-mode .map-card { background:#0b0b0c !important; border-color:#141516 !important; box-shadow:none !important; color:#e6eef1 !important; }
+.dark-mode input, .dark-mode select, .dark-mode .textarea { background:#0d0e10 !important; color:#e6eef1 !important; border-color:#222 !important; }
+.dark-mode .btn { background:#1b1c1d !important; color:#e6eef1 !important; border-color:#222 !important; }
+.dark-mode .btn.secondary { background:transparent !important; color:#e6eef1 !important; border-color:#333 !important; }
+.dark-mode .map-box { background:#071012 !important; }
+.dark-mode .contact-list .item { color:#dbe9e4 !important; }
+.dark-mode .toast { background:#0aa37f !important; color:#fff !important; }
+.dark-mode footer { background:#006c4f !important; color:#e8f9f0 !important; }
+
+/* nuevo: asegurar que el título PQRS sea blanco en modo oscuro */
+.dark-mode .h1 { color: #ffffff !important; }
+
+/* Corregir apariencia del menú desplegable en modo oscuro */
+.dark-mode .nav-links{
+  background: #0b0c0d !important;
+  border-color: #151617 !important;
+  color: #e6eef1 !important;
+  box-shadow: 0 14px 36px rgba(0,0,0,0.6) !important;
+  z-index: 9999 !important;
+}
+
+.dark-mode .menu {
+    background: #0b0c0d !important;
+    border-color: #151617 !important;
+    color: #e6eef1 !important;
+}
+
+.dark-mode .menu a{
+  color: #e6eef1 !important;
+}
+.dark-mode .menu a:hover,
+.dark-mode .menu a:focus-visible{
+  background: rgba(0,166,125,0.08) !important;
+  color: var(--link-active) !important;
+}
+
+/* NAV / DROPDOWN: asegurar nav-links blancas y dropdown-toggle oscuro+texto blanco */
+.dark-mode .nav-links > a,
+.dark-mode .nav-links .dropdown > a {
+  color: #ffffff !important;
+}
+.dark-mode .nav-links > a:hover,
+.dark-mode .nav-links .dropdown > a:hover {
+  color: #ffffff !important;
+  opacity: 0.95;
+}
+.dark-mode .dropdown > a {
+  background: #0b0c0d !important;
+  color: #ffffff !important;
+  padding: 8px 12px !important;
+  border-radius: 8px;
+  display: inline-block;
+}
+.dark-mode .nav-right .account { color: #ffffff !important; }
 </style>
 </head>
 <body>
 
 <!-- ===== Topbar redes ===== -->
-<div class="topbar" id="topbar">
+<div class="topbar">
   <div class="container">
     <div class="social">
       <a href="https://www.facebook.com/unab.online" target="_blank" rel="noopener" aria-label="Facebook">
@@ -187,6 +257,7 @@ nav.main{display:flex;align-items:center;gap:20px;min-height:64px}
             <a href="ulibro.html">Ulibro</a>
             <a href="semanaingenieria.html">Semana de Ingeniería</a>
             <a href="ingeniotic.html">Ingeniotic</a>
+            <a href="vacaciones.html">Vacaciones</a>
           </div>
         </div>
 
@@ -255,33 +326,82 @@ nav.main{display:flex;align-items:center;gap:20px;min-height:64px}
 <!-- Toast -->
 <div class="toast" id="toast" role="status" aria-live="polite">¡Mensaje enviado!</div>
 
-<script>
-/* Dropdown EVENTOS: abre/cierra y se cierra al hacer click fuera o con ESC */
-const dd = document.querySelector('.dropdown');
-const tg = dd?.querySelector('.dropdown-toggle');
-tg?.addEventListener('click', e => { e.preventDefault(); dd.classList.toggle('open'); });
-document.addEventListener('click', e => { if(dd && !dd.contains(e.target)) dd.classList.remove('open'); });
-document.addEventListener('keydown', e => { if(e.key === 'Escape') dd.classList.remove('open'); });
+<!-- Footer verde -->
+<footer style="background:#008f6d;color:#fff;font-size:13px;padding:10px 0">
+  <div class="container" style="max-width:1120px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;text-align:center">
+    <div>Universidad Autónoma de Bucaramanga - UNAB | Acreditación Institucional de Alta Calidad</div>
+    <div>|</div>
+    <div>Avenida 42 No. 48 – 11, Bucaramanga - Colombia | PBX (57) (7) 643 6111</div>
+    <div>|</div>
+    <div>Centro de Contacto: 018000127395 | <a href="#" style="color:#fff;text-decoration:underline">Aviso de Privacidad</a> | © Todos los derechos reservados</div>
+  </div>
+</footer>
 
-/* PQRS: demo submit (sin backend) */
-const form = document.getElementById('pqrsForm');
-const toast = document.getElementById('toast');
-form?.addEventListener('submit', (e)=>{
-  e.preventDefault();
-  const name = (document.getElementById('name').value || '').trim();
-  const msg  = (document.getElementById('msg').value  || '').trim();
-  if(!name || !msg){
-    toast.textContent = 'Completa nombre y mensaje.'; showToast();
-    return;
+<!-- Reemplazamos los scripts duplicados por uno único y robusto -->
+<script>
+(function(){
+  // Dropdown: delegación de eventos para soportar múltiples dropdowns y clicks fuera
+  function closeAllDropdowns(){
+    document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
   }
-  // Aquí podrías hacer fetch() a tu endpoint
-  form.reset();
-  toast.textContent = '¡Mensaje enviado!'; showToast();
-});
-function showToast(){
-  toast.classList.add('show');
-  setTimeout(()=> toast.classList.remove('show'), 2200);
-}
+  document.addEventListener('click', (e) => {
+    const toggle = e.target.closest('.dropdown-toggle');
+    if(toggle){
+      e.preventDefault();
+      const dd = toggle.closest('.dropdown');
+      if(dd) dd.classList.toggle('open');
+      return;
+    }
+    // click fuera: cerrar cualquier dropdown abierto
+    if(!e.target.closest('.dropdown')) closeAllDropdowns();
+  });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeAllDropdowns(); });
+
+  // "Cuenta" comportamiento (redirección según user.name)
+  const account = document.querySelector('.account');
+  if(account){
+    account.addEventListener('click', e => {
+      e.preventDefault();
+      let u = null;
+      try{ u = JSON.parse(localStorage.getItem('user.name')); }catch{}
+      location.href = u ? 'userpage.html' : 'login.html';
+    });
+  }
+
+  // PQRS: submit demo y toast
+  const form = document.getElementById('pqrsForm');
+  const toast = document.getElementById('toast');
+  function showToast(msg){
+    if(!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(()=> toast.classList.remove('show'), 2200);
+  }
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = (document.getElementById('name').value || '').trim();
+    const msg  = (document.getElementById('msg').value || '').trim();
+    if(!name || !msg){
+      showToast('Completa nombre y mensaje.');
+      return;
+    }
+    form.reset();
+    showToast('¡Mensaje enviado!');
+    // Aquí podrías hacer fetch() al endpoint real si existe
+  });
+
+})();
+</script>
+
+<!-- Aplicar tema guardado (dark/light) aunque esta página no tenga toggle -->
+<script>
+(function(){
+  try{
+    const t = localStorage.getItem('site.theme');
+    if(t === 'dark') document.documentElement.classList.add('dark-mode');
+    else document.documentElement.classList.remove('dark-mode');
+  }catch(e){}
+})();
 </script>
 </body>
 </html>

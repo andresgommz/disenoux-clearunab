@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vacaciones – UNAB</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="../static/img/favicon.png">
+  <link href="../static/css/index.css" rel="stylesheet">
+  <!-- Estilos de la sección Vacaciones (soporte modo claro y oscuro) -->
+  <style>
+    /* Layout base */
+    .vac-wrap{max-width:1120px;margin:0 auto;display:flex;gap:32px;align-items:center;justify-content:center;padding:8px;}
+    .vac-left{flex:1;display:flex;align-items:center;justify-content:center}
+    .vac-right{flex:1;display:flex;align-items:center}
+    .vac-right p{font-size:18px;margin:0;line-height:1.6;max-width:720px}
+    .vac-left img{width:100%;border-radius:18px;display:block;object-fit:cover;max-height:420px}
+
+    /* Light-mode (por defecto) */
+    :root { --vac-text: #21394d; --vac-link:#007f63; --vac-bg: #ffffff; }
+    .vac-right p { color: var(--vac-text); }
+
+    /* Dark-mode overrides */
+    .dark-mode body { background: #070809 !important; color:#e6eef1 !important; }
+    .dark-mode .topbar{ background:#063825 !important; color:#cfeee0 !important; }
+    .dark-mode header{ background:#0b0c0d !important; border-color:#151617 !important; }
+    .dark-mode .vac-right p { color: #e6eef1 !important; }
+    .dark-mode .vac-left img { filter: brightness(.95) saturate(.95); }
+    .dark-mode .vac-wrap { background: transparent !important; }
+    /* Ensure links readable */
+    .dark-mode a { color: var(--vac-link) !important; }
+
+    /* NAV / DROPDOWN: nav-links blancas y dropdown-toggle oscuro+texto blanco */
+    .dark-mode .nav-links > a,
+    .dark-mode .nav-links .dropdown > a {
+      color: #ffffff !important;
+    }
+    .dark-mode .nav-links > a:hover,
+    .dark-mode .nav-links .dropdown > a:hover {
+      color: #ffffff !important;
+      opacity: 0.95;
+    }
+    .dark-mode .dropdown > a {
+      background: #0b0c0d !important;
+      color: #ffffff !important;
+      padding: 8px 12px !important;
+      border-radius: 8px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== Topbar redes ===== -->
+  <div class="topbar">
+    <div class="container">
+      <div class="social">
+        <a href="https://www.facebook.com/unab.online" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5 3.66 9.14 8.44 9.94v-7.03H8.08v-2.91h2.36V9.41c0-2.33 1.39-3.62 3.52-3.62.72 0 1.84.12 2.33.24v2.56h-1.31c-1.29 0-1.69.8-1.69 1.62v1.95h2.86l-.46 2.91h-2.4V22c4.78-.8 8.44-4.94 8.44-9.94z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/school/universidad-autonoma-de-bucaramanga/posts/?feedView=all" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1.01 1.83-2.07 3.77-2.07 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.03-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/></svg>
+        </a>
+        <a href="https://x.com/unab_online?lang=es" target="_blank" rel="noopener" aria-label="X">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M18.9 2H22l-8.1 9.3L22.7 22h-6.3l-5-6.5L5.4 22H2.3l8.7-9.9L1.9 2h6.5l4.6 6.1L18.9 2zM17.6 20h1.7L8.6 4H6.9l10.7 16z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/unab_online/?hl=es" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="../static/img/instagram.png" width="18" height="18" alt="Instagram">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== NAV con EVENTOS desplegable (igual que resto) ===== -->
+  <header>
+    <div class="container">
+      <nav class="main">
+        <div class="nav-links">
+          <a href="index.html">INICIO</a>
+          <a href="egresados.html">EGRESADOS DESTACADOS</a>
+
+          <div class="dropdown">
+            <a class="dropdown-toggle" href="#">EVENTOS ▾</a>
+            <div class="menu">
+              <a href="unabfest.html">UNAB Fest</a>
+              <a href="ulibro.html">Ulibro</a>
+              <a href="semanaingenieria.html">Semana de Ingeniería</a>
+              <a href="ingeniotic.html">Ingeniotic</a>
+              <a href="vacaciones.html">Vacaciones</a>
+            </div>
+          </div>
+
+          <a href="contacto.html">CONTÁCTANOS</a>
+        </div>
+        <div class="nav-right">
+          <a class="account" href="login.html" title="Ingresar a mi cuenta">
+            <svg viewBox="0 0 24 24" fill="#526579"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg>
+            <span>Cuenta</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Contenido: imagen a la izquierda, solo texto a la derecha (sin título) ===== -->
+  <main class="page" style="padding:4px 16px">
+    <div class="vac-wrap" aria-label="Contenido vacaciones">
+      <div class="vac-left">
+        <img id="vac-img" src="../static/img/vacaciones.jpeg" alt="Vacaciones UNAB">
+      </div>
+      <div class="vac-right">
+        <p id="vac-text">
+          Estudiante, disfruta tus vacaciones. ¡Recárgate para volver el próximo semestre lleno de energía para seguir aprendiendo en la UNAB, tu universidad!
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- pequeño script para ajustar altura y evitar scroll en pantallas anchas -->
+  <script>
+    (function(){
+      const wrap = document.querySelector('.vac-wrap');
+      const img = document.getElementById('vac-img');
+
+      function adjust(){
+        const topbar = document.querySelector('.topbar');
+        const header = document.querySelector('header');
+        const footer = document.querySelector('footer');
+        const topH = topbar ? topbar.offsetHeight : 0;
+        const headerH = header ? header.offsetHeight : 0;
+        const footerH = footer ? footer.offsetHeight : 0;
+        const gap = 32; // margen extra
+        const avail = Math.max(200, window.innerHeight - topH - headerH - footerH - gap);
+
+        if(window.innerWidth >= 900){
+          // Forzar que el bloque ocupe la altura disponible y evitar scroll global
+          wrap.style.minHeight = avail + 'px';
+          img.style.maxHeight = (avail - 40) + 'px';
+          document.documentElement.style.overflowY = 'hidden';
+        } else {
+          // En móvil permitir scrolling y apilado natural
+          wrap.style.minHeight = '';
+          img.style.maxHeight = '';
+          document.documentElement.style.overflowY = '';
+        }
+      }
+
+      window.addEventListener('resize', adjust);
+      window.addEventListener('load', adjust);
+      // ajustar también tras imágenes cargadas
+      img.addEventListener('load', adjust);
+    })();
+  </script>
+
+  <!-- Insertar/actualizar script cercano al final (antes del footer) -->
+  <script>
+  (function(){
+    // Dropdown eventos: abrir/cerrar, click fuera, ESC (delegado)
+    const dd = document.querySelector('.dropdown');
+    const tg = dd?.querySelector('.dropdown-toggle');
+    tg?.addEventListener('click', e => { e.preventDefault(); dd.classList.toggle('open'); });
+    document.addEventListener('click', e => { if(dd && !dd.contains(e.target)) dd.classList.remove('open'); });
+    document.addEventListener('keydown', e => { if(e.key === 'Escape') dd.classList.remove('open'); });
+
+    // comportamiento "Cuenta" (redirige según user.name)
+    const account = document.querySelector('.account');
+    if(account){
+      account.addEventListener('click', e => {
+        e.preventDefault();
+        let u = null;
+        try{ u = JSON.parse(localStorage.getItem('user.name')) }catch{}
+        location.href = u ? 'userpage.html' : 'login.html';
+      });
+    }
+  })();
+  </script>
+
+  <!-- Aplicar tema guardado (dark/light) aunque esta página no tenga toggle -->
+  <script>
+  (function(){
+    try{
+      const t = localStorage.getItem('site.theme');
+      if(t === 'dark') document.documentElement.classList.add('dark-mode');
+      else document.documentElement.classList.remove('dark-mode');
+    }catch(e){}
+  })();
+  </script>
+
+  <!-- Footer verde (igual que en las demás páginas) -->
+  <footer style="background:#008f6d;color:#fff;font-size:13px;padding:10px 0;margin-top:18px">
+    <div class="container" style="max-width:1120px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;text-align:center">
+      <div>Universidad Autónoma de Bucaramanga - UNAB | Acreditación Institucional de Alta Calidad</div>
+      <div>|</div>
+      <div>Avenida 42 No. 48 – 11, Bucaramanga - Colombia | PBX (57) (7) 643 6111</div>
+      <div>|</div>
+      <div>Centro de Contacto: 018000127395 | <a href="#" style="color:#fff;text-decoration:underline">Aviso de Privacidad</a> | © Todos los derechos reservados</div>
+    </div>
+  </footer>
+</body>
+</html>
